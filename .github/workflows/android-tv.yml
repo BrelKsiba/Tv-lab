@@ -48,8 +48,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh release view native-v0.1.0 >/dev/null 2>&1; then
-            gh release upload native-v0.1.0 tv-lab.apk --clobber
+          if gh release view native-v0.2.0 >/dev/null 2>&1; then
+            gh release upload native-v0.2.0 tv-lab.apk --clobber
           else
-            gh release create native-v0.1.0 tv-lab.apk --title "TV Lab Android TV v0.1.0" --notes "Application native Android TV pour Philips OLED848. Sans navigateur, sans root et sans réseau. APK de développement signé automatiquement pour les premiers tests."
+            gh release create native-v0.2.0 tv-lab.apk --title "TV Lab Android TV v0.2.0" --notes "Application native Android TV pour Philips OLED848. Sans navigateur, sans root et sans réseau. APK natif de test ciblant Android API 35, sans permissions déclarées."
           fi
