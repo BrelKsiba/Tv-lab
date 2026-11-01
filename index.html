@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#080b18" />
+  <title>TV Lab — Philips OLED848</title>
+  <style>
+    :root{color-scheme:dark;--ink:#eef5ff;--muted:#95a7c5;--a:#5af0ee;--b:#7b7ef7;--border:rgba(211,235,255,.16)}
+    *{box-sizing:border-box}
+    html,body{width:100%;min-height:100%;margin:0;background:#050812;color:var(--ink);font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;overflow:hidden}
+    body{min-height:100svh;display:grid;place-items:center;position:relative;isolation:isolate}
+    body:before{content:"";position:absolute;inset:-22%;z-index:-2;background:radial-gradient(ellipse at 28% 33%,rgba(23,93,137,.29),transparent 38%),radial-gradient(ellipse at 80% 72%,rgba(72,30,130,.24),transparent 42%);animation:drift 38s ease-in-out infinite alternate;pointer-events:none}
+    body:after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(185,220,255,.034) 1px,transparent 1px),linear-gradient(90deg,rgba(185,220,255,.034) 1px,transparent 1px);background-size:56px 56px;opacity:.33;mask-image:linear-gradient(to bottom,transparent,black 28%,black 85%,transparent);pointer-events:none}
+    @keyframes drift{0%{transform:translate(-2%,-1%) rotate(0deg)}100%{transform:translate(3%,3%) rotate(6deg)}}
+    .shell{width:min(88vw,1700px);min-height:82svh;display:flex;flex-direction:column;justify-content:space-between;gap:1.7rem;padding:2.2rem 0;position:relative}
+    header,footer{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+    .brand{letter-spacing:.23em;font-weight:740;font-size:clamp(.78rem,1.24vw,1.2rem)}
+    .brand .dot{display:inline-block;width:8px;height:8px;box-shadow:0 0 14px var(--a);background:var(--a);border-radius:50%;vertical-align:middle;margin-right:12px}
+    .pill{border:1px solid var(--border);background:rgba(24,38,65,.43);padding:.65rem 1.15rem;border-radius:99px;color:#b6cae3;font-size:clamp(.7rem,1.05vw,.95rem);letter-spacing:.06em}
+    main{display:flex;flex-direction:column;justify-content:center;min-height:50svh;gap:1.5rem}
+    .eyebrow{text-transform:uppercase;letter-spacing:.29em;color:var(--a);font-size:clamp(.75rem,1.25vw,1.1rem);font-weight:700}
+    #clock{font-weight:220;letter-spacing:-.075em;line-height:1;font-size:clamp(6rem,17vw,19rem);font-variant-numeric:tabular-nums;text-shadow:0 12px 95px rgba(79,162,210,.12)}
+    .date{font-size:clamp(1.15rem,2.65vw,2.8rem);font-weight:320;color:#c9daec;letter-spacing:.015em}
+    .sub{font-size:clamp(.84rem,1.25vw,1.2rem);color:var(--muted);margin-top:.7rem}
+    .actions{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.2rem}
+    button{font:inherit;min-width:168px;min-height:54px;padding:1rem 1.4rem;border-radius:16px;border:1px solid rgba(186,213,239,.22);color:#ddecff;background:rgba(32,46,77,.42);cursor:pointer;font-size:clamp(.88rem,1.1vw,1.07rem);transition:transform .15s,background .2s,border-color .2s}
+    button:hover,button:focus-visible{outline:3px solid var(--a);outline-offset:4px;background:rgba(49,83,118,.53);transform:translateY(-2px)}
+    button[aria-pressed="true"]{border-color:rgba(90,240,238,.68);background:rgba(30,98,115,.27);color:#c5ffff}
+    .meta{font-size:clamp(.68rem,1vw,1rem);color:var(--muted);line-height:1.5}
+    .right{display:flex;align-items:center;gap:14px;color:#9fb5d4}
+    .orb{width:12px;height:12px;border-radius:50%;background:#5af0ee;box-shadow:0 0 20px rgba(90,240,238,.5);animation:pulse 4s infinite}
+    @keyframes pulse{0%,100%{opacity:.65;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+    body[data-mode="violet"]{--a:#c6abff;--b:#f0a2e6}
+    body[data-mode="violet"]:before{background:radial-gradient(ellipse at 30% 34%,rgba(77,44,133,.31),transparent 42%),radial-gradient(ellipse at 80% 76%,rgba(143,52,109,.2),transparent 45%)}
+    body[data-mode="minimal"]:before,body[data-mode="minimal"]:after{opacity:0}
+    .help{opacity:.72}
+    @media(max-width:700px){html,body{overflow:auto}.shell{min-height:100svh;width:88vw;padding:1.7rem 0}header,footer{align-items:flex-start}.pill{font-size:.6rem}main{min-height:55svh}#clock{font-size:clamp(5.5rem,20vw,9rem)}.actions{flex-direction:column}button{width:100%}footer{flex-direction:column;gap:.8rem}.right{align-self:flex-start}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body data-mode="ocean">
+  <div class="shell">
+    <header><div class="brand"><span class="dot"></span> TV LAB <span style="color:#6b839e;font-size:.78em;font-weight:450;letter-spacing:.14em;margin-left:14px;white-space:nowrap">/ EXPÉRIENCE 01</span></div><div class="pill">PHILIPS OLED848 · GOOGLE TV</div></header>
+    <main>
+      <div class="eyebrow">Bienvenue à la maison</div>
+      <div id="clock" aria-live="off">10:49</div>
+      <div class="date" id="date">Dimanche 1 novembre 2026</div>
+      <div class="sub" id="subtitle">Un petit laboratoire créatif, directement sur ta télévision.</div>
+      <div class="actions" role="group" aria-label="Choisir un thème">
+        <button id="ocean" data-theme="ocean" aria-pressed="true">✦ Aurora</button>
+        <button id="violet" data-theme="violet" aria-pressed="false">◈ Néon violet</button>
+        <button id="minimal" data-theme="minimal" aria-pressed="false">◯ OLED minimal</button>
+      </div>
+    </main>
+    <footer><div class="meta">Prototype local · Aucune donnée envoyée · Aucun accès au système TV</div><div class="right"><div class="orb" aria-hidden="true"></div><span class="meta help">Télécommande : ◀ ▶ puis OK</span></div></footer>
+  </div>
+  <script>
+    (function(){
+      const clock=document.getElementById('clock'),date=document.getElementById('date');
+      const fmtTime=new Intl.DateTimeFormat('fr-FR',{hour:'2-digit',minute:'2-digit',hour12:false});
+      const fmtDate=new Intl.DateTimeFormat('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+      const refresh=()=>{const now=new Date();clock.textContent=fmtTime.format(now);const d=fmtDate.format(now);date.textContent=d.charAt(0).toUpperCase()+d.slice(1)};
+      refresh();setInterval(refresh,15000);
+      const buttons=Array.from(document.querySelectorAll('[data-theme]'));
+      const setTheme=(name)=>{document.body.dataset.mode=name;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.theme===name)))};
+      buttons.forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.theme)));
+      document.addEventListener('keydown',e=>{if(['ArrowRight','ArrowLeft'].includes(e.key)){e.preventDefault();const i=Math.max(0,buttons.indexOf(document.activeElement));buttons[(i+(e.key==='ArrowRight'?1:buttons.length-1))%buttons.length].focus()}if(e.key==='Escape'||e.key==='Backspace')document.activeElement.blur()});
+      // Lightweight pixel-safe shifts to reduce persistent static placement on OLED screens.
+      const shell=document.querySelector('.shell');let move=0;
+      setInterval(()=>{move=(move+1)%8;shell.style.transform="translate("+((move%4-1.5)*1.5)+"px,"+((Math.floor(move/4)*2-1)*1.4)+"px)"},60000);
+    })();
+  </script>
+</body>
+</html>
